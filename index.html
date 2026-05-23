@@ -299,7 +299,7 @@ footer { background: var(--black); padding: 3.5rem 3rem 0; }
   </ul>
   <div class="nav-right">
     <a href="https://pinterest.com" target="_blank" class="pinterest-nav">Pinterest</a>
-    <button class="admin-nav-btn" onclick="openAdmin()">⚙ Admin</button>
+    
   </div>
 </nav>
 
@@ -725,6 +725,10 @@ function saveSettings() {
 document.getElementById('admin-overlay').addEventListener('click', function(e) {
   if (e.target === this) closeAdmin();
 });
+
+// Secret admin access via URL hash
+if(window.location.hash === "#admin") { openAdmin(); }
+window.addEventListener("hashchange", function() { if(window.location.hash === "#admin") openAdmin(); });
 
 // Init
 renderProducts();
