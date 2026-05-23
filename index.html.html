@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gilt & Grace — Luxury Lifestyle Curation</title>
+<meta name="description" content="Curated luxury fashion and home finds from Amazon and top luxury brands. Discover the best in style, elegance, and living.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --black: #0A0A08;
+  --off-white: #F8F5F0;
+  --gold: #C9A84C;
+  --gold-light: #E8D5A3;
+  --gold-dark: #8B6914;
+  --gray: #6B6760;
+  --light-gray: #E8E4DC;
+  --card-bg: #FDFAF6;
+}
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Jost', sans-serif;
+  background: var(--off-white);
+  color: var(--black);
+  overflow-x: hidden;
+}
+a { text-decoration: none; color: inherit; }
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--off-white); }
+::-webkit-scrollbar-thumb { background: var(--gold); }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.5rem 4rem;
+  background: rgba(248,245,240,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+}
+.logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--black);
+}
+.logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gray); transition: color 0.3s; font-weight: 500;
+}
+.nav-links a:hover { color: var(--gold); }
+.nav-right { display: flex; align-items: center; gap: 1.5rem; }
+.pinterest-nav {
+  display: flex; align-items: center; gap: 0.5rem;
+  background: #E60023; color: white;
+  font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 0.55rem 1.2rem; border-radius: 2px; font-weight: 500;
+  transition: background 0.2s;
+}
+.pinterest-nav:hover { background: #c0001e; }
+.pinterest-nav svg { width: 14px; height: 14px; fill: white; }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 5rem;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 6rem 4rem 4rem;
+  background: var(--black);
+  position: relative; overflow: hidden;
+}
+.hero-left::before {
+  content: '';
+  position: absolute; top: -100px; right: -100px;
+  width: 400px; height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.15) 0%, transparent 70%);
+}
+.hero-eyebrow {
+  font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 2rem;
+  display: flex; align-items: center; gap: 1rem;
+}
+.hero-eyebrow::before {
+  content: ''; display: block; width: 3rem; height: 1px; background: var(--gold);
+}
+.hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3.5rem, 5vw, 5.5rem);
+  font-weight: 300; line-height: 1.05;
+  color: var(--off-white); margin-bottom: 1.5rem;
+}
+.hero h1 em { color: var(--gold); font-style: italic; }
+.hero-sub {
+  font-size: 0.88rem; color: rgba(248,245,240,0.5);
+  line-height: 1.8; max-width: 380px;
+  margin-bottom: 3rem; font-weight: 300;
+}
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-gold {
+  background: var(--gold); color: var(--black);
+  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 1rem 2rem; border: none; cursor: pointer;
+  font-family: 'Jost', sans-serif; font-weight: 500;
+  transition: all 0.3s; display: inline-block;
+}
+.btn-gold:hover { background: var(--gold-light); }
+.btn-ghost {
+  background: transparent; color: var(--off-white);
+  font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 1rem 2rem; border: 1px solid rgba(248,245,240,0.3);
+  cursor: pointer; font-family: 'Jost', sans-serif; font-weight: 500;
+  transition: all 0.3s; display: inline-block;
+}
+.btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+.hero-badges {
+  display: flex; gap: 2rem; margin-top: 3rem;
+  border-top: 1px solid rgba(248,245,240,0.1); padding-top: 2rem;
+}
+.badge-item { }
+.badge-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; color: var(--gold); display: block;
+}
+.badge-label {
+  font-size: 0.65rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: rgba(248,245,240,0.4);
+}
+
+.hero-right {
+  display: grid; grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.hero-img-block {
+  position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 4rem;
+}
+.hero-img-block:nth-child(1) {
+  grid-column: 1/-1;
+  background: linear-gradient(135deg, #1a1a18 0%, #2a2820 100%);
+  min-height: 300px;
+}
+.hero-img-block:nth-child(2) {
+  background: linear-gradient(135deg, #2C2416 0%, #3D3220 100%);
+  min-height: 200px;
+}
+.hero-img-block:nth-child(3) {
+  background: linear-gradient(135deg, #1C2018 0%, #2A2E20 100%);
+  min-height: 200px;
+}
+.img-label {
+  position: absolute; bottom: 1.2rem; left: 1.2rem;
+  background: rgba(201,168,76,0.9);
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 0.3rem 0.8rem; color: var(--black); font-weight: 500;
+}
+.hero-tag-float {
+  position: absolute; top: 1.2rem; right: 1.2rem;
+  background: rgba(10,10,8,0.8);
+  font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 0.3rem 0.8rem; color: var(--gold);
+  border: 1px solid rgba(201,168,76,0.3);
+}
+
+/* MARQUEE */
+.marquee-bar {
+  background: var(--gold); padding: 0.75rem 0; overflow: hidden;
+}
+.marquee-track {
+  display: flex; gap: 3rem; animation: marquee 20s linear infinite;
+  white-space: nowrap;
+}
+.marquee-item {
+  font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--black); font-weight: 500; flex-shrink: 0;
+  display: flex; align-items: center; gap: 1rem;
+}
+.marquee-dot { width: 4px; height: 4px; background: var(--black); border-radius: 50%; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* CATEGORIES */
+.categories { padding: 6rem 4rem; }
+.section-header { margin-bottom: 3.5rem; }
+.section-eyebrow {
+  font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.8rem; display: block;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3vw, 3rem); font-weight: 300; line-height: 1.2;
+}
+.cat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--light-gray); border: 1.5px solid var(--light-gray); }
+.cat-item {
+  background: var(--card-bg); padding: 3rem 2.5rem;
+  transition: all 0.4s; cursor: pointer; position: relative; overflow: hidden;
+}
+.cat-item::after {
+  content: ''; position: absolute; bottom: 0; left: 0;
+  width: 0; height: 2px; background: var(--gold);
+  transition: width 0.4s;
+}
+.cat-item:hover::after { width: 100%; }
+.cat-item:hover { background: var(--black); }
+.cat-item:hover .cat-title { color: var(--off-white); }
+.cat-item:hover .cat-desc { color: rgba(248,245,240,0.5); }
+.cat-item:hover .cat-arrow { color: var(--gold); }
+.cat-emoji { font-size: 2.5rem; margin-bottom: 1.5rem; display: block; }
+.cat-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; font-weight: 400;
+  margin-bottom: 0.8rem; transition: color 0.4s;
+}
+.cat-desc {
+  font-size: 0.8rem; color: var(--gray);
+  line-height: 1.7; font-weight: 300; transition: color 0.4s;
+  margin-bottom: 1.5rem;
+}
+.cat-arrow { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); transition: color 0.4s; }
+
+/* FEATURED PRODUCTS */
+.featured { padding: 6rem 4rem; background: var(--black); }
+.featured .section-title { color: var(--off-white); }
+.featured .section-eyebrow { color: var(--gold); }
+.products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 3rem; }
+.product-card {
+  background: #111110; border: 1px solid rgba(201,168,76,0.1);
+  border-radius: 2px; overflow: hidden;
+  transition: all 0.4s; cursor: pointer;
+}
+.product-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-6px); }
+.product-card:hover .product-overlay { opacity: 1; }
+.product-img {
+  height: 220px; display: flex; align-items: center;
+  justify-content: center; font-size: 3.5rem; position: relative;
+  overflow: hidden;
+}
+.product-overlay {
+  position: absolute; inset: 0;
+  background: rgba(201,168,76,0.1);
+  opacity: 0; transition: opacity 0.3s;
+  display: flex; align-items: center; justify-content: center;
+}
+.product-badge {
+  position: absolute; top: 1rem; left: 1rem;
+  background: var(--gold); color: var(--black);
+  font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 0.25rem 0.6rem; font-weight: 500;
+}
+.product-info { padding: 1.2rem 1.2rem 1.5rem; }
+.product-source {
+  font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 0.4rem;
+}
+.product-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem; color: var(--off-white);
+  margin-bottom: 0.5rem; line-height: 1.3;
+}
+.product-price {
+  font-size: 0.85rem; color: var(--gold-light); font-weight: 300;
+  margin-bottom: 1rem;
+}
+.shop-btn {
+  display: block; text-align: center;
+  background: transparent; border: 1px solid rgba(201,168,76,0.3);
+  color: var(--gold); font-size: 0.6rem;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  padding: 0.6rem; transition: all 0.3s; font-family: 'Jost', sans-serif;
+  font-weight: 500;
+}
+.shop-btn:hover { background: var(--gold); color: var(--black); }
+
+/* AFFILIATE BANNER */
+.affiliate-banner {
+  margin: 0 4rem; border-radius: 2px;
+  background: linear-gradient(135deg, #1a1508 0%, #2a2010 50%, #1a1508 100%);
+  border: 1px solid rgba(201,168,76,0.3);
+  padding: 4rem; display: flex; align-items: center;
+  justify-content: space-between; gap: 2rem; flex-wrap: wrap;
+  position: relative; overflow: hidden;
+}
+.affiliate-banner::before {
+  content: '✦';
+  position: absolute; right: 6rem; top: 50%;
+  transform: translateY(-50%);
+  font-size: 8rem; color: rgba(201,168,76,0.05);
+}
+.aff-text h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem; color: var(--off-white);
+  font-weight: 300; margin-bottom: 0.8rem; line-height: 1.2;
+}
+.aff-text p {
+  font-size: 0.83rem; color: rgba(248,245,240,0.45);
+  font-weight: 300; max-width: 400px; line-height: 1.7;
+}
+.aff-logos { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+.aff-logo-pill {
+  background: rgba(201,168,76,0.1);
+  border: 1px solid rgba(201,168,76,0.25);
+  color: var(--gold-light); font-size: 0.75rem;
+  letter-spacing: 0.1em; padding: 0.5rem 1.2rem;
+  font-weight: 500; border-radius: 2px;
+}
+
+/* PINTEREST SECTION */
+.pinterest-section { padding: 6rem 4rem; }
+.pinterest-section .section-title { margin-bottom: 1rem; }
+.pinterest-section > p {
+  font-size: 0.88rem; color: var(--gray); font-weight: 300;
+  line-height: 1.7; max-width: 500px; margin-bottom: 3rem;
+}
+.pinterest-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2.5rem; }
+.p-pin {
+  border-radius: 4px; overflow: hidden; position: relative;
+  cursor: pointer; transition: transform 0.3s;
+}
+.p-pin:hover { transform: scale(1.03); }
+.p-pin:hover .p-pin-overlay { opacity: 1; }
+.p-pin-img {
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3rem;
+}
+.p-pin-overlay {
+  position: absolute; inset: 0;
+  background: rgba(230,0,35,0.85);
+  opacity: 0; transition: opacity 0.3s;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column; gap: 0.5rem;
+}
+.p-save-btn {
+  background: white; color: #E60023;
+  font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.5rem 1.2rem; border: none; cursor: pointer;
+  font-family: 'Jost', sans-serif; font-weight: 500;
+  border-radius: 2px; text-decoration: none; display: inline-block;
+}
+.p-pin-label {
+  font-size: 0.6rem; color: rgba(255,255,255,0.8);
+  letter-spacing: 0.15em; text-transform: uppercase;
+}
+.p-pin-info { padding: 0.8rem 0.6rem; background: var(--card-bg); }
+.p-pin-cat { font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.2rem; }
+.p-pin-title { font-size: 0.82rem; color: var(--black); font-weight: 400; }
+.pinterest-cta-row {
+  display: flex; align-items: center; gap: 1.5rem;
+  padding: 2rem 2.5rem;
+  background: #E60023; border-radius: 2px;
+}
+.p-logo { display: flex; align-items: center; gap: 0.6rem; }
+.p-logo svg { width: 28px; height: 28px; fill: white; }
+.p-logo-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem; color: white; font-weight: 300;
+}
+.p-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.3); }
+.p-cta-text { flex: 1; }
+.p-cta-text h3 { font-size: 1rem; color: white; font-weight: 500; margin-bottom: 0.2rem; }
+.p-cta-text p { font-size: 0.78rem; color: rgba(255,255,255,0.7); font-weight: 300; }
+.p-follow-btn {
+  background: white; color: #E60023;
+  font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 0.8rem 1.8rem; border: none; cursor: pointer;
+  font-family: 'Jost', sans-serif; font-weight: 500;
+  white-space: nowrap; text-decoration: none; display: inline-block;
+  border-radius: 2px;
+}
+.p-follow-btn:hover { background: var(--off-white); }
+
+/* HOW IT WORKS */
+.how-it-works { padding: 6rem 4rem; background: var(--light-gray); }
+.steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 3rem; }
+.step { position: relative; }
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 4rem; color: rgba(201,168,76,0.2);
+  line-height: 1; margin-bottom: 1rem;
+}
+.step-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem; margin-bottom: 0.7rem;
+}
+.step-desc { font-size: 0.8rem; color: var(--gray); line-height: 1.7; font-weight: 300; }
+.step-line {
+  position: absolute; top: 2rem; right: 0; width: 50%;
+  height: 1px; background: rgba(201,168,76,0.3);
+}
+.step:last-child .step-line { display: none; }
+
+/* FOOTER */
+footer { background: var(--black); padding: 4rem; }
+.footer-top {
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 3rem; margin-bottom: 3rem;
+  padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; font-weight: 300;
+  letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--off-white); margin-bottom: 1rem; display: block;
+}
+.footer-logo span { color: var(--gold); }
+.footer-tagline {
+  font-size: 0.78rem; color: rgba(248,245,240,0.3);
+  font-weight: 300; line-height: 1.7; max-width: 220px;
+  margin-bottom: 1.5rem;
+}
+.footer-social { display: flex; gap: 0.8rem; }
+.social-pill {
+  background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.2);
+  color: var(--gold); font-size: 0.6rem;
+  letter-spacing: 0.15em; text-transform: uppercase;
+  padding: 0.4rem 0.8rem; transition: all 0.2s;
+  text-decoration: none;
+}
+.social-pill:hover { background: var(--gold); color: var(--black); }
+.footer-col h4 {
+  font-size: 0.6rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--gold); margin-bottom: 1.2rem;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-col a {
+  font-size: 0.8rem; color: rgba(248,245,240,0.35);
+  transition: color 0.2s; font-weight: 300;
+}
+.footer-col a:hover { color: var(--gold); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-bottom p { font-size: 0.7rem; color: rgba(248,245,240,0.2); }
+.footer-bottom .disclaimer {
+  font-size: 0.65rem; color: rgba(248,245,240,0.15);
+  max-width: 500px; line-height: 1.5;
+}
+
+/* ANIMATIONS */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
+.hero-left { animation: fadeUp 1s ease forwards; }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { display: none; }
+  .hero-left { padding: 4rem 1.5rem 3rem; }
+  .categories, .featured, .pinterest-section, .how-it-works { padding: 3rem 1.5rem; }
+  .cat-grid, .products-grid, .steps-grid { grid-template-columns: 1fr; }
+  .pinterest-grid { grid-template-columns: repeat(2, 1fr); }
+  .affiliate-banner { margin: 0 1.5rem; padding: 2rem 1.5rem; }
+  footer { padding: 2rem 1.5rem; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">Gilt <span>&</span> Grace</a>
+  <ul class="nav-links">
+    <li><a href="#fashion">Fashion</a></li>
+    <li><a href="#home-decor">Home</a></li>
+    <li><a href="#pinterest">Pinterest</a></li>
+    <li><a href="#about">About</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://pinterest.com" target="_blank" class="pinterest-nav">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+      Follow Us
+    </a>
+  </div>
+</nav>
+
+<!-- MARQUEE -->
+<div class="marquee-bar" style="margin-top: 5rem;">
+  <div class="marquee-track">
+    <span class="marquee-item">Amazon Finds <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Luxury Picks <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Fashion Edits <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Home Decor <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Affiliate Curated <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Pinterest Boards <span class="marquee-dot"></span></span>
+    <span class="marquee-item">New Arrivals <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Amazon Finds <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Luxury Picks <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Fashion Edits <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Home Decor <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Affiliate Curated <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Pinterest Boards <span class="marquee-dot"></span></span>
+    <span class="marquee-item">New Arrivals <span class="marquee-dot"></span></span>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Curated Luxury Lifestyle</p>
+    <h1>Where <em>Gilt</em><br>Meets <em>Grace</em></h1>
+    <p class="hero-sub">Handpicked luxury fashion and home finds from Amazon and the world's finest brands — curated for those who live beautifully.</p>
+    <div class="hero-btns">
+      <a href="#featured" class="btn-gold">Shop the Edit</a>
+      <a href="https://pinterest.com" target="_blank" class="btn-ghost">View Pinterest Boards</a>
+    </div>
+    <div class="hero-badges">
+      <div class="badge-item">
+        <span class="badge-num">500+</span>
+        <span class="badge-label">Curated Picks</span>
+      </div>
+      <div class="badge-item">
+        <span class="badge-num">2</span>
+        <span class="badge-label">Affiliate Partners</span>
+      </div>
+      <div class="badge-item">
+        <span class="badge-num">Daily</span>
+        <span class="badge-label">New Pins</span>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-block">
+      <span>👜</span>
+      <span class="img-label">New Season</span>
+      <span class="hero-tag-float">Luxury Edit</span>
+    </div>
+    <div class="hero-img-block">
+      <span>💎</span>
+      <span class="img-label">Accessories</span>
+    </div>
+    <div class="hero-img-block">
+      <span>🏡</span>
+      <span class="img-label">Home Decor</span>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="categories" id="fashion">
+  <div class="section-header">
+    <span class="section-eyebrow">Explore Our Collections</span>
+    <h2 class="section-title">Shop by Category</h2>
+  </div>
+  <div class="cat-grid">
+    <div class="cat-item">
+      <span class="cat-emoji">👗</span>
+      <h3 class="cat-title">Luxury Fashion</h3>
+      <p class="cat-desc">Designer pieces, seasonal trends and curated outfits sourced from top luxury retailers and Amazon's premium fashion selection.</p>
+      <span class="cat-arrow">Explore →</span>
+    </div>
+    <div class="cat-item" id="home-decor">
+      <span class="cat-emoji">🏡</span>
+      <h3 class="cat-title">Home & Living</h3>
+      <p class="cat-desc">Elevate your interiors with handpicked home decor, furniture, and styling pieces curated from Amazon and luxury home brands.</p>
+      <span class="cat-arrow">Explore →</span>
+    </div>
+    <div class="cat-item">
+      <span class="cat-emoji">✨</span>
+      <h3 class="cat-title">Beauty & Accessories</h3>
+      <p class="cat-desc">From statement accessories to premium beauty finds — the finishing touches that complete any look.</p>
+      <span class="cat-arrow">Explore →</span>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="featured" id="featured">
+  <div class="section-header">
+    <span class="section-eyebrow">Affiliate Picks</span>
+    <h2 class="section-title">The Edit This Week</h2>
+  </div>
+  <div class="products-grid">
+    <div class="product-card">
+      <div class="product-img" style="background: linear-gradient(135deg, #1a1508, #2a2010);">
+        <span>👜</span>
+        <div class="product-overlay"></div>
+        <div class="product-badge">Amazon Pick</div>
+      </div>
+      <div class="product-info">
+        <p class="product-source">Amazon Associates</p>
+        <p class="product-name">Structured Leather Tote</p>
+        <p class="product-price">From $89</p>
+        <a href="https://amazon.com" target="_blank" class="shop-btn">Shop Now →</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img" style="background: linear-gradient(135deg, #1C1C18, #252520);">
+        <span>🧥</span>
+        <div class="product-overlay"></div>
+        <div class="product-badge">Luxury Pick</div>
+      </div>
+      <div class="product-info">
+        <p class="product-source">Luxury Affiliate</p>
+        <p class="product-name">Cashmere Wool Coat</p>
+        <p class="product-price">From $320</p>
+        <a href="https://amazon.com" target="_blank" class="shop-btn">Shop Now →</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img" style="background: linear-gradient(135deg, #181C18, #202820);">
+        <span>🕯️</span>
+        <div class="product-overlay"></div>
+        <div class="product-badge">Amazon Pick</div>
+      </div>
+      <div class="product-info">
+        <p class="product-source">Amazon Associates</p>
+        <p class="product-name">Luxury Candle Set</p>
+        <p class="product-price">From $45</p>
+        <a href="https://amazon.com" target="_blank" class="shop-btn">Shop Now →</a>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img" style="background: linear-gradient(135deg, #1a1218, #251820);">
+        <span>💍</span>
+        <div class="product-overlay"></div>
+        <div class="product-badge">Luxury Pick</div>
+      </div>
+      <div class="product-info">
+        <p class="product-source">Luxury Affiliate</p>
+        <p class="product-name">Gold Statement Jewelry</p>
+        <p class="product-price">From $180</p>
+        <a href="https://amazon.com" target="_blank" class="shop-btn">Shop Now →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AFFILIATE BANNER -->
+<div class="affiliate-banner" style="margin-top: 4rem; margin-bottom: 4rem;">
+  <div class="aff-text">
+    <h2>Trusted Affiliate Partners</h2>
+    <p>Every product on Gilt & Grace is handpicked and linked through trusted affiliate programs. When you shop through our links, you support our curation at no extra cost to you.</p>
+  </div>
+  <div class="aff-logos">
+    <div class="aff-logo-pill">Amazon Associates</div>
+    <div class="aff-logo-pill">Farfetch</div>
+    <div class="aff-logo-pill">RewardStyle / LTK</div>
+  </div>
+</div>
+
+<!-- PINTEREST SECTION -->
+<section class="pinterest-section" id="pinterest">
+  <div class="section-header">
+    <span class="section-eyebrow">Follow on Pinterest</span>
+    <h2 class="section-title">Our Latest Boards</h2>
+  </div>
+  <p>Discover our curated Pinterest boards — new pins added daily for fashion, home decor, and luxury lifestyle inspiration.</p>
+  <div class="pinterest-grid">
+    <div class="p-pin">
+      <div class="p-pin-img" style="height: 220px; background: linear-gradient(135deg, #2a2010, #1a1508); font-size: 3rem;">👗</div>
+      <div class="p-pin-overlay">
+        <a href="https://pinterest.com" target="_blank" class="p-save-btn">Save Pin</a>
+        <span class="p-pin-label">Fashion Board</span>
+      </div>
+      <div class="p-pin-info">
+        <p class="p-pin-cat">Fashion</p>
+        <p class="p-pin-title">Autumn Luxury Outfits</p>
+      </div>
+    </div>
+    <div class="p-pin">
+      <div class="p-pin-img" style="height: 220px; background: linear-gradient(135deg, #181C1C, #202828); font-size: 3rem;">🏡</div>
+      <div class="p-pin-overlay">
+        <a href="https://pinterest.com" target="_blank" class="p-save-btn">Save Pin</a>
+        <span class="p-pin-label">Home Board</span>
+      </div>
+      <div class="p-pin-info">
+        <p class="p-pin-cat">Home Decor</p>
+        <p class="p-pin-title">Minimalist Living Rooms</p>
+      </div>
+    </div>
+    <div class="p-pin">
+      <div class="p-pin-img" style="height: 220px; background: linear-gradient(135deg, #201818, #281a20); font-size: 3rem;">👜</div>
+      <div class="p-pin-overlay">
+        <a href="https://pinterest.com" target="_blank" class="p-save-btn">Save Pin</a>
+        <span class="p-pin-label">Accessories Board</span>
+      </div>
+      <div class="p-pin-info">
+        <p class="p-pin-cat">Accessories</p>
+        <p class="p-pin-title">Designer Bag Wishlist</p>
+      </div>
+    </div>
+    <div class="p-pin">
+      <div class="p-pin-img" style="height: 220px; background: linear-gradient(135deg, #1a1820, #201828); font-size: 3rem;">✨</div>
+      <div class="p-pin-overlay">
+        <a href="https://pinterest.com" target="_blank" class="p-save-btn">Save Pin</a>
+        <span class="p-pin-label">Beauty Board</span>
+      </div>
+      <div class="p-pin-info">
+        <p class="p-pin-cat">Beauty</p>
+        <p class="p-pin-title">Luxury Beauty Essentials</p>
+      </div>
+    </div>
+  </div>
+  <div class="pinterest-cta-row">
+    <div class="p-logo">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 0C5.373 0 0 5.373 0 12c0 5.084 3.163 9.426 7.627 11.174-.105-.949-.2-2.405.042-3.441.218-.937 1.407-5.965 1.407-5.965s-.359-.719-.359-1.782c0-1.668.967-2.914 2.171-2.914 1.023 0 1.518.769 1.518 1.69 0 1.029-.655 2.568-.994 3.995-.283 1.194.599 2.169 1.777 2.169 2.133 0 3.772-2.249 3.772-5.495 0-2.873-2.064-4.882-5.012-4.882-3.414 0-5.418 2.561-5.418 5.207 0 1.031.397 2.138.893 2.738a.36.36 0 0 1 .083.345l-.333 1.36c-.053.22-.174.267-.402.161-1.499-.698-2.436-2.889-2.436-4.649 0-3.785 2.75-7.262 7.929-7.262 4.163 0 7.398 2.967 7.398 6.931 0 4.136-2.607 7.464-6.227 7.464-1.216 0-2.359-.632-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0z"/></svg>
+      <span class="p-logo-text">Pinterest</span>
+    </div>
+    <div class="p-divider"></div>
+    <div class="p-cta-text">
+      <h3>Follow Gilt & Grace on Pinterest</h3>
+      <p>New luxury finds and affiliate picks pinned daily. Join our community of style lovers.</p>
+    </div>
+    <a href="https://pinterest.com" target="_blank" class="p-follow-btn">Follow Now</a>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-it-works" id="about">
+  <div class="section-header">
+    <span class="section-eyebrow">How It Works</span>
+    <h2 class="section-title">Shop & Save with Gilt & Grace</h2>
+  </div>
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">01</div>
+      <h3 class="step-title">Discover on Pinterest</h3>
+      <p class="step-desc">Browse our curated Pinterest boards for daily luxury fashion and home decor inspiration.</p>
+      <div class="step-line"></div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <h3 class="step-title">Click the Link</h3>
+      <p class="step-desc">Every pin links directly to our website or the product page on Amazon and luxury retailers.</p>
+      <div class="step-line"></div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <h3 class="step-title">Shop Trusted Sources</h3>
+      <p class="step-desc">All products are sourced from Amazon Associates and verified luxury affiliate partners.</p>
+      <div class="step-line"></div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <h3 class="step-title">Live Beautifully</h3>
+      <p class="step-desc">Enjoy your curated finds — and follow us for more daily picks, edits, and style inspiration.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <a href="#" class="footer-logo">Gilt <span>&</span> Grace</a>
+      <p class="footer-tagline">Curated luxury fashion and home finds through trusted affiliate partnerships.</p>
+      <div class="footer-social">
+        <a href="https://pinterest.com" target="_blank" class="social-pill">Pinterest</a>
+        <a href="#" class="social-pill">Instagram</a>
+        <a href="#" class="social-pill">Newsletter</a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="#fashion">Fashion</a></li>
+        <li><a href="#home-decor">Home Decor</a></li>
+        <li><a href="#featured">This Week's Edit</a></li>
+        <li><a href="#">Accessories</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Partners</h4>
+      <ul>
+        <li><a href="https://amazon.com" target="_blank">Amazon Associates</a></li>
+        <li><a href="https://farfetch.com" target="_blank">Farfetch</a></li>
+        <li><a href="https://liketoknow.it" target="_blank">LTK / RewardStyle</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Info</h4>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Affiliate Disclosure</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Gilt & Grace. All rights reserved.</p>
+    <p class="disclaimer">This site contains affiliate links. We may earn a commission when you purchase through our links, at no extra cost to you.</p>
+  </div>
+</footer>
+
+</body>
+</html>
